@@ -19,6 +19,20 @@ class Diet  extends Authenticatable implements JWTSubject
         'carbohydrate',
         'fats'
     ];
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
+
+public function meals(){
+    return $this->hasMany(Meal::class,'diet_id');
+}
+
+
+
+
+
+
     use HasFactory;
 
 

@@ -7,15 +7,33 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use App\Models\Meal;
 
 class Food  extends Authenticatable implements JWTSubject
 {
     protected $table = 'food';
 
     protected $fillable = [
-        'food_id',
         'food_name',
     ];
+
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
+
+##################################################### Begin RelationShip #####################################################
+
+    // public function meals_food(){
+    //     return $this->hasMany(Meals_food::class,'food_id');
+    // }
+
+    public function meals(){
+        return $this->belongsToMany(Meal::class,'meals_food','food_id','meal_id','id','id');
+    }
+###################################################### End RelationShip #######################################################
+
+
     use HasFactory;
 
     public function getJWTIdentifier()

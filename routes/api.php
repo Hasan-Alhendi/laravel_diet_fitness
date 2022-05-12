@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\User\AuthUserController;
 use App\Http\Controllers\Api\User\UserController;
 use App\Http\Controllers\Api\Diet\DietController;
+use App\Http\Controllers\Api\Meal\MealController;
 use App\Http\Controllers\Api\Admin\AuthAdminController;
 
 
@@ -11,7 +12,6 @@ use App\Http\Controllers\Api\Admin\AuthAdminController;
 //Route User
 
 Route::group(['prefix' => 'user','namespace' => 'User'],function(){
-    Route::get('diet/{diet_id}',[DietController::class,'getDietById']);
     Route::post('register',[UserController::class,'store']);
     Route::put('personal-information/{id}',[UserController::class,'update']);
     Route::delete('delete/{id}',[UserController::class,'destroy']);
@@ -26,3 +26,10 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'],function(){
     Route::post('logout',[AuthAdminController::class,'logout']) -> middleware(['auth.guard:admin-api']);
     Route::delete('delete-user/{id}',[UserController::class,'destroy']);
 });
+
+################################ Begin one To Many RelationShip #################################
+
+    Route::get('diet/{diet_id}',[DietController::class,'show']);
+    Route::get('meal/{meal_id}',[MealController::class,'show']);
+
+################################ End one To Many RelationShip ###################################
