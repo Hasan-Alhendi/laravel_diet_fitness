@@ -46,14 +46,8 @@ class UserController extends Controller
         $validator = Validator::make($request -> all(), $rules, $messages);
 
         if($validator -> fails()){
-            return $this -> returnError('E000',$validator -> errors() ->first());
+            return $this -> returnError('E000',$validator -> errors());
         }
-
-
-        // User::create([
-        //     'email' => $request->email,
-        //     'password' => Hash::make($request->password),
-        // ]);
 
         User::create([
             'email' => $request->email,
@@ -139,7 +133,7 @@ class UserController extends Controller
     public function getRules(){
         return [
             // 'name' => ['required','max:100'],
-            'email' => ['required'],
+            'email' => ['required','unique:users,email'],
             'password' => ['required','confirmed'],
             // 'birth_date' => ['required'],
             // 'gender' => ['required'],

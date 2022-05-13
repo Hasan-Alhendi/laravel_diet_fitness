@@ -13,12 +13,23 @@ class Meals_food  extends Authenticatable implements JWTSubject
     protected $table = 'meals_food';
 
     protected $fillable = [
-        'meals_food_id',
         'meal_id',
         'food_id',
         'quantity_weight',
         'quantity_str'
     ];
+
+        ################################################# Begin RelationShip #####################################################
+        // public function meal(){
+        //     return $this->belongsTo(Meal::class,'meal_id');
+        // }
+
+        // public function food(){
+        //     return $this->belongsTo(Food::class,'food_id');
+        // }
+    ###################################################### End RelationShip #######################################################
+
+
     use HasFactory;
 
 

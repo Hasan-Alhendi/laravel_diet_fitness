@@ -1,16 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Api\Diet;
+namespace App\Http\Controllers\Api\Meal;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Diet;
+use App\Models\Meal;
+use App\Models\Food;
 use App\Traits\GeneralTrait;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 
-class DietController extends Controller
+class MealController extends Controller
 {
     use GeneralTrait;
     /**
@@ -41,15 +43,7 @@ class DietController extends Controller
      */
     public function store(Request $request)
     {
-        $diet = new Diet;
-        $diet->calory = $request->calory;
-        $diet->model_number = $request->model_number;
-        $diet->protien = $request->protien;
-        $diet->carbohydrate = $request->carbohydrate;
-        $diet->fats = $request->fats;
-        $diet->save();
 
-        
     }
 
     /**
@@ -60,12 +54,8 @@ class DietController extends Controller
      */
     public function show($id)
     {
-
-            //    $diet = Diet::find($id);
-
-            // $diet =  Diet::where('calory',$id)->get();
-            $diet = Diet::with('meals')->where('calory',$id)->get();
-            return $this->returnData('Diet',$diet);
+        $meal = Meal::find($id);
+        return  $this->returnData('meal',$meal->foods);
     }
 
     /**
@@ -99,9 +89,6 @@ class DietController extends Controller
     public function destroy($id)
     {
     }
-
-
-
 
 
 }

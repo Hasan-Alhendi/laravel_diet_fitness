@@ -28,7 +28,7 @@ trait  GeneralTrait
     {
         return response()->json([
             'status' => true,
-            'errNum' => "S000",
+            'errNum' => "",
             'msg' => $msg,
             $key => $value
         ]);
