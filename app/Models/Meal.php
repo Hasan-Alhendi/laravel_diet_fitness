@@ -15,9 +15,6 @@ class Meal  extends Authenticatable implements JWTSubject
     protected $fillable = [
         'diet_id',
         'type',
-        'protien',
-        'carbohydrate',
-        'fats'
     ];
     protected $hidden = [
         'created_at',
@@ -30,7 +27,11 @@ class Meal  extends Authenticatable implements JWTSubject
     }
 
     public function foods(){
+second
+        return $this->belongsToMany(food::class,'meals_food','meal_id','food_id')->withPivot('quantity_weight', 'quantity_str');
+
         return $this->belongsToMany(food::class,'meals_food','meal_id','food_id');
+ server
     }
 ###################################################### End RelationShip #######################################################
     use HasFactory;

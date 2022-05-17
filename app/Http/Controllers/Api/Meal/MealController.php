@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Diet;
 use App\Models\Meal;
+ second
+use App\Models\Food;
+
+ server
 use App\Traits\GeneralTrait;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
@@ -54,7 +58,11 @@ class MealController extends Controller
     public function show($id)
     {
         $meal = Meal::find($id);
+ second
+        return  $this->returnData('meal',$meal->foods);
+
         return $meal->foods();
+ server
     }
 
     /**

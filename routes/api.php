@@ -31,5 +31,9 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'],function(){
 
     Route::get('diet/{diet_id}',[DietController::class,'show']);
     Route::get('meal/{meal_id}',[MealController::class,'show']);
+ second
+    Route::post('diet/store',[DietController::class,'store']);
+
+ server
 
 ################################ End one To Many RelationShip ###################################
