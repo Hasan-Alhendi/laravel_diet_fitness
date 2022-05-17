@@ -41,6 +41,7 @@ class DietController extends Controller
      */
     public function store(Request $request)
     {
+ second
         $diet = new Diet;
         $diet->calory = $request->calory;
         $diet->model_number = $request->model_number;
@@ -50,6 +51,9 @@ class DietController extends Controller
         $diet->save();
 
         
+
+
+ server
     }
 
     /**
@@ -101,8 +105,11 @@ class DietController extends Controller
     }
 
 
+ second
 
 
 
+
+ server
 }
 
